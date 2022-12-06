@@ -19,26 +19,48 @@
         <h1>Nous vous redirigons vers un virus.</h1>
         <p>Est-ce une fake news ?</p>
         
-        <!-- <div class="loader"></div> -->
+        <div class="loader">
+            <img src="./loading-part.svg" alt="loading-part">
+            <img src="./loading-part.svg" alt="loading-part">
+        </div>
+
         <img src="https://media.tenor.com/R60t1w70yOAAAAAj/dm4uz3-foekoe.gif" alt="Danger" class="p2">
+
+        <div class="bg">
+            <img src="https://media.tenor.com/Yc9kDf9z44gAAAAM/kryonax-skull.gif" alt="Skull">
+        </div>
+
+        <img src="./chrome_OnmVZTlD4M.png" alt="error" class="err-box">
     </section>
 
-    <section class="content active">
+    <section class="content">
         <h3>Liens pour identifier les Fake News</h3>
 
         <p>
-            Voici le lien de décodex qui est site afin de vérifier si les informations sont vraies :
+            Voici le lien de décodex qui est site permettant de vérifier si les informations sont vraies :
             <a href="https://addons.mozilla.org/fr/firefox/addon/lemonde-decodex/">Décodex</a>
         </p>
         <p>
-            Voici un lien de recherche de vidéo inversée qui vous permettra d'identifier les "vraies" Fake News :
+            Voici un lien de recherche de vidéo inversée qui vous permettra d'identifier les "vraies" Fake News
+            à partir de l'URL d'un lien YouTube :
             <a href="https://citizenevidence.amnestyusa.org/">Youtube Dataviewer</a>
         </p>
     </section>
 
     <script type="text/javascript">
-        setTimeout(() => document.querySelector('.virus').remove(), 2e3);
-        setTimeout(() => document.querySelector('.content').classList.remove('active'), 2e3);
+        // Error boxes
+        const virusBox = document.querySelector('.virus');
+        for (let i = 0; i < 200; i++) setTimeout(() => {
+                let el = document.createElement('img'),
+                    x = Math.random() * window.screen.height - 50, y = Math.random() * window.screen.width - 50;
+                el.alt = "error";
+                el.src = "./chrome_OnmVZTlD4M.png";
+                el.classList.add('err-box');
+                el.setAttribute('style', `top: ${x}px; left: ${y}px;`);
+                virusBox.append(el);
+            }, i * 10);
+
+        setTimeout(() => document.body.classList.add('active'), 2e3);
     </script>
 
 </body>

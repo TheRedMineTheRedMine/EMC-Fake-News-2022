@@ -1,59 +1,105 @@
-* {
-    font-family: sans-serif;
-}
-
 body {
-    overflow: hidden;
-    background: #fff;
+  overflow: hidden;
+  font-family: sans-serif;
 }
-
-section.virus {
-    width: calc(100vw - 2em);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 1em;
+body section {
+  width: calc(100vw - 2em);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1em;
 }
-
-section.virus h1 {
-    font-size: 2rem;
+body section.virus {
+  justify-content: center;
+  align-items: center;
 }
-
-section.virus p {
-    font-size: .9rem;
+body section.virus h1 {
+  font-size: 2rem;
 }
-
-section.virus .p1, section.virus .p2 {
-    position: absolute;
+body section.virus p {
+  font-size: 0.9rem;
 }
-
-section.virus .p1 {
-    top: 10px;
-    left: 10px;
+body section.virus .p1, body section.virus .p2 {
+  position: absolute;
 }
-
-section.virus .p2 {
-    bottom: 10px;
-    right: 10px;
+body section.virus .p1 {
+  top: 10px;
+  left: 10px;
 }
-
-section.content.active {
-    display: none;
+body section.virus .p2 {
+  bottom: 10px;
+  right: 10px;
 }
-
-section.content {
-    display: flex;
-    flex-direction: column;
+body section.virus .loader {
+  display: block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-top: 1em;
 }
-
-section.content h3 {
-    text-align: center;
-    font-size: 1.4rem;
+body section.virus .loader img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: invert(1);
 }
-
-section.content p a {
-    color: #00f;
+body section.virus .loader img:nth-child(1) {
+  -webkit-animation: turn-animation 0.8s linear infinite;
+          animation: turn-animation 0.8s linear infinite;
 }
+body section.virus .loader img:nth-child(2) {
+  -webkit-animation: turn-animation 0.8s cubic-bezier(0.445, 0.1, 0.55, 0.9) 100ms infinite;
+          animation: turn-animation 0.8s cubic-bezier(0.445, 0.1, 0.55, 0.9) 100ms infinite;
+}
+@-webkit-keyframes turn-animation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes turn-animation {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body section.virus .bg {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+body section.virus .bg img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  filter: opacity(10%);
+}
+body section.virus .err-box {
+  position: absolute;
+  width: 250px;
+}
+body section.content {
+  display: none;
+}
+body section.content h3 {
+  text-align: center;
+  font-size: 1.4rem;
+}
+body section.content p a {
+  color: #00f;
+}
+body.active section.virus {
+  display: none;
+}
+body.active section.content {
+  display: flex;
+}/*# sourceMappingURL=qr.css.map */

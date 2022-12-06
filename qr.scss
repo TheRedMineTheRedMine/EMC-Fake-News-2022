@@ -1,0 +1,93 @@
+body {
+    overflow: hidden;
+    font-family: sans-serif;
+
+    section {
+        width: calc(100vw - 2em);
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 0 1em;
+
+        &.virus {
+            justify-content: center;
+            align-items: center;
+
+            h1 { font-size: 2rem }
+            p { font-size: .9rem }
+
+            .p1, .p2 { position: absolute }
+
+            .p1 {
+                top: 10px;
+                left: 10px;
+            }
+
+            .p2 {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .loader {
+                display: block;
+                position: relative;
+                width: 80px;
+                height: 80px;
+                margin-top: 1em;
+
+                img {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    filter: invert(1);
+
+                    &:nth-child(1) { animation: turn-animation .8s linear infinite }
+                    &:nth-child(2) { animation: turn-animation .8s cubic-bezier(0.445, 0.10, 0.55, 0.90) 100ms infinite }
+
+                    @keyframes turn-animation {
+                        from { transform: rotate(0); }
+                        to { transform: rotate(360deg);}
+                    }
+                }
+            }
+
+            .bg {
+                position: absolute;
+                z-index: -1;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+
+                img {
+                    object-fit: contain;
+                    width: 100%;
+                    height: 100%;
+                    background: #000;
+                    filter: opacity(10%);
+                }
+            }
+
+            .err-box {
+                position: absolute;
+                width: 250px;
+            }
+        }
+
+        &.content {
+            display: none;
+
+            h3 {
+                text-align: center;
+                font-size: 1.4rem;
+            }
+
+            p a { color: #00f }
+        }
+    }
+
+    &.active {
+        section.virus { display: none }
+        section.content { display: flex }
+    }
+}
