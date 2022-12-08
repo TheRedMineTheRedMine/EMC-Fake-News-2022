@@ -29,8 +29,6 @@
         <div class="bg">
             <img src="https://media.tenor.com/Yc9kDf9z44gAAAAM/kryonax-skull.gif" alt="Skull">
         </div>
-
-        <img src="./chrome_OnmVZTlD4M.png" alt="error" class="err-box">
     </section>
 
     <section class="content">
@@ -48,19 +46,24 @@
     </section>
 
     <script type="text/javascript">
-        // Error boxes
-        const virusBox = document.querySelector('.virus');
-        for (let i = 0; i < 200; i++) setTimeout(() => {
-                let el = document.createElement('img'),
-                    x = Math.random() * window.screen.height - 50, y = Math.random() * window.screen.width - 50;
-                el.alt = "error";
-                el.src = "./chrome_OnmVZTlD4M.png";
-                el.classList.add('err-box');
-                el.setAttribute('style', `top: ${x}px; left: ${y}px;`);
-                virusBox.append(el);
-            }, i * 10);
+        window.onload = () => setTimeout(() => {
+            let virusBox = document.querySelector('.virus'), time = 0;
 
-        setTimeout(() => document.body.classList.add('active'), 2e3);
+            for (let i = 0; i < 200; i++) {
+                time += 2/(i+1) * 333;
+                setTimeout(() => {
+                    let el = document.createElement('img'),
+                        x = Math.random() * window.screen.height - 50, y = Math.random() * window.screen.width - 50;
+                    el.alt = "error";
+                    el.src = "./chrome_OnmVZTlD4M.png";
+                    el.classList.add('err-box');
+                    el.setAttribute('style', `top: ${x}px; left: ${y}px;`);
+                    virusBox.append(el);
+                }, time)
+            };
+
+            setTimeout(() => document.body.classList.add('active'), time + 1000);
+        }, 2e3);
     </script>
 
 </body>
